@@ -4,5 +4,9 @@
   "compatibility_date": "2026-10-16",
   "assets": {
     "directory": "./public"
-  }
+  },
+  // Public address imad-work-with-me.<account>.workers.dev
+  "workers_dev": true,
+  // Each version and branch gets its own preview address (used to review changes before merging)
+  "preview_urls": true
 }
