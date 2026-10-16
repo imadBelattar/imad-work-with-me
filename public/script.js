@@ -134,7 +134,7 @@ const CONFIG = {
         links.forEach((a) => a.setAttribute("aria-current", String(a.hash === "#" + entry.target.id)));
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    ["offers", "examples", "how", "trust", "faq", "contact", "top"].forEach((id) => {
+    ["offers", "examples", "about", "how", "trust", "faq", "contact", "top"].forEach((id) => {
       const s = document.getElementById(id);
       if (s) io.observe(s);
     });

@@ -308,6 +308,46 @@ html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1
 .example__cta { display: inline-block; margin-block-start: 16px; color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 7px; }
 .note { margin-block-start: 24px; max-inline-size: 40em; color: rgba(232, 237, 242, .8); }
 
+/* Reel gallery: horizontal snap strip on phones, a row of five on desktop */
+.reels {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 62%;
+  gap: 14px; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+  margin-inline: calc(-1 * var(--gutter)); padding: 4px var(--gutter) 16px;
+  scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent;
+}
+.reels li { scroll-snap-align: start; }
+.reelcard { display: grid; gap: 10px; text-decoration: none; }
+.reelcard img {
+  inline-size: 100%; aspect-ratio: 9 / 16; block-size: auto; object-fit: cover;
+  border-radius: 18px; border: 1px solid var(--line-strong);
+  background: var(--card);
+  transition: border-color .2s, transform .2s;
+}
+.reelcard:hover img { border-color: var(--accent); transform: translateY(-3px); }
+.reelcard__kind { font-size: .875rem; color: var(--muted); line-height: 1.2; }
+.reelcard__title { font-weight: 700; line-height: 1.4; margin-block-start: -6px; }
+.reels__more {
+  display: inline-block; margin-block: 8px 40px;
+  color: var(--accent); font-weight: 700; text-underline-offset: 7px;
+}
+
+/* Who am I */
+.about { display: grid; gap: 32px; }
+.about__text h2 { font-size: clamp(1.75rem, 5.4vw, 2.6rem); font-weight: 800; }
+.about__text p { margin-block-start: 16px; max-inline-size: 38em; color: rgba(232, 237, 242, .9); }
+.about__text p:first-of-type { font-size: 1.1875rem; color: var(--text); }
+.facts {
+  margin: 0; align-self: start;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 8px 22px;
+}
+.facts > div { padding-block: 16px; border-block-end: 1px solid var(--line); }
+.facts > div:last-child { border-block-end: 0; }
+.facts dt { font-size: .9375rem; color: var(--muted); }
+.facts dd { margin: 4px 0 0; font-weight: 700; }
+.facts > div:last-child dd { color: var(--accent); }
+
 /* Steps: a real sequence, so numbered */
 .steps { counter-reset: step; display: grid; }
 .steps li {
@@ -407,6 +447,7 @@ html[lang="ar"] .footer__col h2 { font-size: 1rem; }
   .contact { grid-template-columns: auto 1fr; align-items: center; column-gap: 28px; padding: 44px; }
   .contact__actions { grid-column: 1 / -1; }
   .footer__grid { grid-template-columns: 2fr 1fr 1fr; }
+  .reels { grid-auto-columns: 34%; }
 }
 
 @media (min-width: 960px) {
@@ -433,6 +474,9 @@ html[lang="ar"] .footer__col h2 { font-size: 1rem; }
   .steps li:not(:last-child)::after { inset-block: 24px auto; inset-inline: 60px -16px; inline-size: auto; block-size: 1.5px; }
   .steps p { grid-column: auto; }
 
+  .reels { grid-auto-flow: row; grid-template-columns: repeat(5, 1fr); overflow: visible; margin-inline: 0; padding-inline: 0; }
+  .about { grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
+  .facts { padding: 12px 28px; }
   .contact { grid-template-columns: auto 1fr auto; padding: 48px 52px; }
   .contact__actions { grid-column: auto; justify-content: flex-end; }
   .avatar { inline-size: 96px; block-size: 96px; }
