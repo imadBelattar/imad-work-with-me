@@ -1,0 +1,8 @@
+{
+  // Cloudflare Workers config: serves the static files in ./public, no server code.
+  "name": "imad-work-with-me",
+  "compatibility_date": "2026-10-16",
+  "assets": {
+    "directory": "./public"
+  }
+}
