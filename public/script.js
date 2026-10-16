@@ -3,7 +3,6 @@ const CONFIG = {
   whatsappNumber: "212693877257", // international format, digits only
   email: "",                       // e.g. "hello@example.com"
   guideUrl: "",                    // link to the free PDF guide (Google Drive share link)
-  repoUrl: "https://github.com/imadBelattar/imad-work-with-me",
   photoReel: "assets/imad-reel.webp",     // tall photo for the hero frame
   photoAvatar: "assets/imad-avatar.webp", // square photo for the contact block
   defaultLang: "ar"
@@ -56,7 +55,7 @@ const CONFIG = {
     } catch (e) {}
   }
 
-  /* ---------- WhatsApp / email / guide / repo links ---------- */
+  /* ---------- WhatsApp / email / guide links ---------- */
   const number = CONFIG.whatsappNumber.replace(/\D/g, "");
   const wa = (text) => "https://wa.me/" + number + "?text=" + encodeURIComponent(text);
 
@@ -81,9 +80,6 @@ const CONFIG = {
   if (CONFIG.guideUrl) {
     $$("[data-guide]").forEach((box) => (box.hidden = false));
     $$("[data-guide-link]").forEach((a) => (a.href = CONFIG.guideUrl));
-  }
-  if (CONFIG.repoUrl) {
-    $$("[data-repo-link]").forEach((a) => { a.href = CONFIG.repoUrl; a.hidden = false; });
   }
 
   /* ---------- Photo (falls back to the IB initials if missing) ---------- */

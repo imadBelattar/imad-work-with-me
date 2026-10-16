@@ -77,9 +77,6 @@ window.I18N = {
     "w2.h": "Guide PDF gratuit",
     "w2.p": "Un guide gratuit au format PDF.",
     "w2.cta": "Télécharger le guide",
-    "w3.h": "Cette page",
-    "w3.p": "Une page unique en HTML, CSS et un peu de JavaScript, sans framework lourd, gérée depuis un dépôt Git et publiée sur Cloudflare.",
-    "w3.cta": "Le code sur GitHub",
     "work.note": "Quand je réaliserai des projets pour des clients, je les montrerai ici avec leur accord écrit.",
 
     "about.h": "Qui suis-je",
