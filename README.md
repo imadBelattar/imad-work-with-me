@@ -6,6 +6,8 @@ One-page services site for Imad Belattar (@imad.code). Plain HTML + CSS + a litt
 Site files live in `public/` (only that folder is published).
 - `index.html` — all the copy (Arabic, RTL). `TODO(imad)` comments mark text that needs approval.
 - `style.css` — Deep Slate design tokens at the top (`:root`).
+- `i18n.js` — translations. Arabic is read from `index.html`; French (and later Darija) live here.
+- `assets/` — Imad's photo (reel crop + square avatar, WebP).
 - `script.js` — the `CONFIG` block at the top holds the WhatsApp number, email, guide link and repo link. Empty values are hidden on the page.
 
 ## Preview locally
@@ -17,6 +19,13 @@ Then open http://localhost:8000
 ## Deploy
 Cloudflare Workers (static assets), connected to this repo. Every push to `main` deploys automatically.
 Config: `wrangler.jsonc` (the `name` must match the Cloudflare project name).
+
+## Languages
+Arabic is the default. `?lang=fr` opens the French version; the choice is remembered in the browser.
+To add a language, copy the `fr` block in `i18n.js`, translate it, and add a `data-lang` button in the navbar.
+
+## Review flow
+Bigger changes go on a branch + pull request. Cloudflare builds a preview address for the branch; merge into `main` once approved.
 
 ## Before going live
 - Fill `CONFIG` in `script.js` (WhatsApp number first: the page shows only the Instagram button until it is set).

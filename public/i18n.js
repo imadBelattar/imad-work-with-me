@@ -1,0 +1,120 @@
+// Translations. Arabic is read from the HTML itself, so only strings that are NOT on the page
+// (WhatsApp messages) are listed under `ar`. To add a language (e.g. Darija "ary"):
+// copy the `fr` block, translate it, then add a button with data-lang="ary" in the navbar.
+// TODO(imad): approve the French copy before it goes live.
+window.I18N = {
+  ar: {
+    "wa.general": "السلام عليكم، اطلعت على صفحتك وأريد الاستفسار عن خدماتك.",
+    "wa.offer": "السلام عليكم، أريد الاستفسار عن عرض: ",
+    "wa.o1": "ريلز موشن لنشاطي",
+    "wa.o2": "صفحة واحدة أو كتالوج لمنتجاتي",
+    "wa.o3": "إعداد ذكاء اصطناعي للمهام المتكررة",
+    "nav.close": "إغلاق القائمة"
+  },
+
+  fr: {
+    "meta.title": "Imad Belattar | Reels, page de vente et IA pour votre petite entreprise",
+    "meta.desc": "Pour les freelances et petites entreprises au Maroc : reels en motion design, page unique avec bouton de commande WhatsApp, et configuration d'IA pour les tâches répétitives.",
+    "a11y.skip": "Aller au contenu",
+
+    "nav.label": "Navigation",
+    "nav.offers": "Offres",
+    "nav.work": "Réalisations",
+    "nav.how": "Méthode",
+    "nav.faq": "FAQ",
+    "nav.cta": "WhatsApp",
+    "nav.menu": "Menu",
+    "nav.close": "Fermer le menu",
+    "lang.label": "Langue",
+
+    "hero.h1": "Des reels, une page de vente et de l'IA pour votre petite entreprise",
+    "hero.lead": "Je suis Imad. Pour les freelances et petites entreprises au Maroc, je réalise des reels en motion design à partir de votre voix et de vos photos, une page unique pour vos produits avec un bouton de commande WhatsApp, et une configuration d'IA pour vos tâches répétitives.",
+    "hero.note": "Chaque prestation a un périmètre précis et un livrable clair. Le prix est fixé avant de commencer.",
+    "hero.photoAlt": "Photo d'Imad Belattar",
+    "frame.c1": "Reels motion",
+    "frame.c2": "Page de vente",
+    "frame.c3": "IA au quotidien",
+
+    "btn.wa": "Écrivez-moi sur WhatsApp",
+    "btn.ig": "Écrivez-moi sur Instagram",
+    "btn.mail": "Écrivez-moi par e-mail",
+
+    "offers.h": "Trois prestations, un périmètre fixe",
+    "offers.intro": "Chaque offre a un périmètre défini et un livrable clair. Je fixe les prix et les délais avec vous avant de commencer.",
+    "o1.h": "Reels en motion design pour votre activité",
+    "o1.p": "Des reels sans visage, créés en code à partir de votre enregistrement vocal, de vos photos et captures d'écran, dans le même style que les reels <bdi>@imad.code</bdi>.",
+    "o1.deliver": "Fichier MP4 avec couverture et texte de publication",
+    "o2.h": "Une page ou un catalogue pour vos produits",
+    "o2.p": "Une page rapide qui présente vos produits ou services, avec un bouton de commande WhatsApp pour chaque produit.",
+    "o2.deliver": "Site en ligne et un moyen simple de mettre à jour le catalogue vous-même",
+    "o3.h": "L'IA pour vos tâches répétitives",
+    "o3.p": "Une configuration concrète, avec des outils réellement disponibles au Maroc et inclus dans votre abonnement actuel : modèles de messages, réponses rapides, génération de documents.",
+    "o3.deliver": "La configuration prête à l'emploi et un court guide d'utilisation",
+    "spec.deliver": "Livrable",
+    "spec.time": "Délai",
+    "spec.timeVal": "Fixé avant de commencer",
+    "spec.price": "Prix",
+    "spec.priceVal": "Sur demande",
+    "offer.ask": "Demander cette offre",
+
+    "work.h": "Réalisations",
+    "work.intro": "Je montre ici uniquement mon vrai travail.",
+    "w1.h": "Les reels <bdi>@imad.code</bdi>",
+    "w1.p": "Des reels en motion design sans visage, dans le style que je créerai pour vous.",
+    "w1.cta": "Voir les reels sur Instagram",
+    "w2.h": "Guide PDF gratuit",
+    "w2.p": "Un guide gratuit au format PDF.",
+    "w2.cta": "Télécharger le guide",
+    "w3.h": "Cette page",
+    "w3.p": "Une page unique en HTML, CSS et un peu de JavaScript, sans framework lourd, gérée depuis un dépôt Git.",
+    "w3.cta": "Le code sur GitHub",
+    "work.note": "Quand je réaliserai des projets pour des clients, je les montrerai ici avec leur accord écrit.",
+
+    "how.h": "Comment on travaille",
+    "s1.h": "Vous m'envoyez un message",
+    "s1.p": "Vous me parlez de votre activité et de votre besoin.",
+    "s2.h": "Un court appel ou un message vocal",
+    "s2.p": "Pour que je comprenne les détails.",
+    "s3.h": "Périmètre et prix fixes",
+    "s3.p": "Je vous écris ce que je livre, à quel prix et pour quand. Vous validez avant que je commence.",
+    "s4.h": "La livraison",
+    "s4.p": "Vous recevez le travail prêt, avec ce qu'il faut pour l'utiliser.",
+
+    "trust.h": "Je montre, je ne prétends pas",
+    "t1.h": "Chaque information a sa source",
+    "t1.p": "Dans chaque reel, je cite la source de chaque information pour que vous puissiez vérifier.",
+    "t2.h": "Je teste avant de publier",
+    "t2.p": "Ce que je livre et ce que je publie, je le teste d'abord.",
+    "t3.h": "Le travail est sous vos yeux",
+    "t3.p": "Regardez les reels et jugez par vous-même. Je n'affiche ni chiffres ni témoignages que je ne peux pas prouver.",
+
+    "faq.h": "Questions fréquentes",
+    "q1.q": "Combien ça coûte ?",
+    "q1.a": "Cela dépend de l'offre. Avant de commencer, je vous écris le périmètre et le prix, et ce qui est convenu ne change pas.",
+    "q2.q": "Combien de temps ça prend ?",
+    "q2.a": "Le délai est fixé avec le périmètre avant de commencer, et il est écrit dans l'accord.",
+    "q3.q": "Qu'est-ce que je dois fournir ?",
+    "q3.a": "Pour les reels : votre enregistrement vocal, vos photos et captures d'écran. Pour la page : les vraies photos de vos produits, leurs prix et les infos de livraison. Pour l'IA : la liste de vos tâches répétitives et les outils que vous utilisez aujourd'hui.",
+    "q4.q": "Puis-je faire des modifications après la livraison ?",
+    "q4.a": "Pour la page et le catalogue, vous mettez à jour les produits vous-même avec la méthode que je vous remets. Pour le reste, les modifications incluses sont celles écrites dans l'accord ; au-delà, on convient d'un nouveau travail.",
+    "q5.q": "À qui appartient le nom de domaine ?",
+    "q5.a": "À vous. Le domaine est enregistré à votre nom et payé par vous, car la marque vous appartient.",
+    "q6.q": "Comment je paie ?",
+    "q6.a": "On convient du moyen de paiement avant de commencer, et il est écrit dans l'accord.",
+
+    "contact.h": "Parlons-en",
+    "contact.p": "Parlez-moi de votre activité et de votre besoin, je vous propose le périmètre adapté.",
+
+    "footer.tagline": "Reels, pages de vente et IA pour les petites entreprises au Maroc.",
+    "footer.page": "La page",
+    "footer.contact": "Contact",
+    "footer.email": "E-mail",
+    "footer.rights": "Imad Belattar. Tous droits réservés.",
+
+    "wa.general": "Bonjour, j'ai vu votre page et j'aimerais en savoir plus sur vos services.",
+    "wa.offer": "Bonjour, j'aimerais en savoir plus sur l'offre : ",
+    "wa.o1": "Reels en motion design pour mon activité",
+    "wa.o2": "Une page ou un catalogue pour mes produits",
+    "wa.o3": "L'IA pour mes tâches répétitives"
+  }
+};
