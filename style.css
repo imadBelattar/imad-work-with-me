@@ -1,0 +1,172 @@
+/* Deep Slate — one accent (teal). Logical properties throughout so RTL/LTR both work. */
+:root {
+  --bg: #2B3542;
+  --card: #1A2129;
+  --card-2: #232C37;
+  --text: #E8EDF2;
+  --muted: #8A98A8;   /* only used on --card / --card-2 (contrast >= 4.5:1); never on --bg */
+  --accent: #4FD1C5;
+  --line: rgba(232, 237, 242, .14);
+
+  --font-ar: "Cairo", system-ui, sans-serif;
+  --font-head: "Sora", "Cairo", system-ui, sans-serif;
+  --font-body: "Inter", "Cairo", system-ui, sans-serif;
+
+  --gutter: 16px;
+  --max: 1040px;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-block-start: 64px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+h1, h2, h3 { font-family: var(--font-head); margin: 0; line-height: 1.35; }
+p { margin: 0; }
+a { color: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+[hidden] { display: none !important; }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-inline-size: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- top bar ---------- */
+.topbar { background: var(--card); border-block-end: 1px solid var(--line); position: sticky; inset-block-start: 0; z-index: 10; }
+.topbar__in { display: flex; align-items: center; justify-content: space-between; min-block-size: 52px; }
+.wordmark { font-family: var(--font-head); font-weight: 700; text-decoration: none; letter-spacing: .01em; }
+.topbar__link { text-decoration: none; color: var(--text); padding: 8px 4px; }
+.topbar__link:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+/* ---------- hero ---------- */
+.hero { padding-block: 56px 64px; }
+.hero h1 {
+  font-size: clamp(2.1rem, 8vw, 4rem);
+  font-weight: 800;
+  line-height: 1.3;
+  max-inline-size: 17em;
+}
+.lead { margin-block-start: 24px; max-inline-size: 38em; font-size: 1.1875rem; }
+.hero__note { margin-block-start: 12px; max-inline-size: 38em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 32px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-block-size: 52px; padding-inline: 24px;
+  border-radius: 10px; border: 1.5px solid var(--text);
+  font-family: var(--font-ar); font-weight: 600; font-size: 1.0625rem;
+  text-decoration: none; color: var(--text);
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+.btn:hover { background: var(--text); color: var(--card); }
+.btn--primary { background: var(--accent); border-color: var(--accent); color: var(--card); }
+.btn--primary:hover { background: #7fe0d7; border-color: #7fe0d7; color: var(--card); }
+
+/* ---------- sections ---------- */
+.section { padding-block: 64px; }
+.section--tint { background: var(--card-2); }
+.section h2 { font-size: clamp(1.6rem, 5vw, 2.25rem); font-weight: 800; }
+.section__intro { margin-block-start: 12px; max-inline-size: 38em; }
+
+/* ---------- offers ---------- */
+.offers { display: grid; gap: 16px; margin-block-start: 32px; }
+.offer {
+  display: flex; flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px 20px;
+}
+.offer h3 { font-size: 1.25rem; font-weight: 700; }
+.offer > p { margin-block-start: 10px; color: var(--text); }
+.spec { margin: 20px 0 0; border-block-start: 1px solid var(--line); }
+.spec > div { display: grid; grid-template-columns: 5.5em 1fr; gap: 12px; padding-block: 12px; border-block-end: 1px solid var(--line); }
+.spec dt { color: var(--muted); }
+.spec dd { margin: 0; }
+.spec .spec__deliver { color: var(--accent); font-weight: 600; }
+.offer__link { margin-block-start: auto; padding-block-start: 20px; align-self: flex-start; font-weight: 600; text-underline-offset: 6px; }
+.offer__link:hover { text-decoration-thickness: 2px; }
+
+/* ---------- examples ---------- */
+.examples { margin-block-start: 32px; border-block-start: 1px solid var(--line); }
+.example { display: block; padding-block: 24px; border-block-end: 1px solid var(--line); text-decoration: none; }
+.example h3 { font-size: 1.125rem; font-weight: 700; }
+.example p { margin-block-start: 6px; max-inline-size: 40em; }
+.example__link { display: inline-block; margin-block-start: 8px; font-weight: 600; text-underline-offset: 6px; }
+.example--main {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 28px 20px; margin-block: 20px;
+}
+.example--main h3 { font-size: 1.5rem; }
+.example__cta { display: inline-block; margin-block-start: 14px; color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 6px; }
+.example--main:hover .example__cta { text-decoration-thickness: 2px; }
+.note { margin-block-start: 24px; max-inline-size: 40em; }
+
+/* ---------- steps (a real sequence, so numbered) ---------- */
+.steps { counter-reset: step; display: grid; gap: 0; margin-block-start: 28px; border-block-start: 1px solid var(--line); }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; padding-block: 20px; border-block-end: 1px solid var(--line); }
+.steps li::before {
+  content: counter(step);
+  grid-row: span 2;
+  inline-size: 44px; block-size: 44px; border-radius: 50%;
+  border: 1.5px solid var(--text);
+  display: grid; place-items: center;
+  font-family: var(--font-head); font-weight: 700;
+}
+.steps h3 { font-size: 1.125rem; font-weight: 700; align-self: center; }
+.steps p { grid-column: 2; margin-block-start: 2px; }
+
+/* ---------- trust ---------- */
+.trust { display: grid; gap: 28px; margin-block-start: 28px; }
+.trust h3 { font-size: 1.125rem; font-weight: 700; }
+.trust p { margin-block-start: 4px; max-inline-size: 34em; }
+
+/* ---------- FAQ ---------- */
+.faq { margin-block-start: 28px; border-block-start: 1px solid var(--line); }
+.faq details { border-block-end: 1px solid var(--line); }
+.faq summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  min-block-size: 56px; padding-block: 12px;
+  font-weight: 600; font-size: 1.0625rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ""; flex: none; inline-size: 10px; block-size: 10px;
+  border-inline-end: 2px solid var(--text); border-block-end: 2px solid var(--text);
+  transform: rotate(45deg); transition: transform .2s; margin-inline-end: 4px;
+}
+.faq details[open] summary::after { transform: rotate(-135deg); }
+.faq details p { padding-block-end: 20px; max-inline-size: 40em; }
+
+/* ---------- contact + footer ---------- */
+.contact { background: var(--card); }
+.footer { background: var(--card); border-block-start: 1px solid var(--line); color: var(--muted); padding-block: 20px; font-size: .9375rem; }
+.footer__in { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.footer a { text-underline-offset: 4px; }
+
+/* ---------- wider screens ---------- */
+@media (min-width: 860px) {
+  :root { --gutter: 32px; }
+  .hero { padding-block: 96px 104px; }
+  .section { padding-block: 88px; }
+  .offers { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .offer { padding: 28px 24px; }
+  .steps { grid-template-columns: repeat(4, 1fr); border-block-start: 0; column-gap: 24px; }
+  .steps li { grid-template-columns: 1fr; border-block-end: 0; border-block-start: 1px solid var(--line); padding-block: 24px 0; row-gap: 6px; }
+  .steps li::before { grid-row: auto; margin-block-end: 8px; }
+  .steps p { grid-column: auto; }
+  .trust { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .example--main { padding: 36px 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
