@@ -104,7 +104,7 @@
 }
   </script>
 
-  <link rel="preload" as="image" href="assets/imad-reel.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/imad-reel.webp" imagesrcset="assets/imad-reel-540.webp 540w, assets/imad-reel.webp 720w" imagesizes="(min-width: 960px) 300px, min(270px, 70vw)" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
@@ -178,7 +178,7 @@
       <div class="reel-wrap">
         <figure class="reel">
           <div class="reel__bars" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span></div>
-          <img class="reel__img" data-photo src="assets/imad-reel.webp" alt="صورة عماد بالعطار" data-i18n-attr="alt:hero.photoAlt" width="720" height="1280" fetchpriority="high" decoding="async">
+          <img class="reel__img" data-photo src="assets/imad-reel.webp" srcset="assets/imad-reel-540.webp 540w, assets/imad-reel.webp 720w" sizes="(min-width: 960px) 300px, min(270px, 70vw)" alt="صورة عماد بالعطار" data-i18n-attr="alt:hero.photoAlt" width="720" height="1280" fetchpriority="high" decoding="async">
           <div class="reel__initials" data-initials aria-hidden="true" hidden><bdi>IB</bdi></div>
           <figcaption class="reel__cap">
             <bdi class="reel__handle">@imad.code</bdi>
@@ -256,11 +256,11 @@
         <p data-i18n="work.intro" data-i18n-html>ريلز موشن جرافيك صنعتها ونشرتها على Instagram في حساب <bdi>@imad.code</bdi>. اضغط على الفيديو لتشغيله بالصوت.</p>
       </header>
 
-      <!-- Reels play on the page. To add one: copy an <li>, set the MP4 (720x1280, H.264, faststart), the cover (poster) and the post URL. -->
+      <!-- Reels play on the page. To add one: copy an <li>, set the MP4 (720x1280, H.264, faststart), the cover (data-poster, loaded when the reel comes near the screen) and the post URL. -->
       <ul class="reels" aria-label="ريلز @imad.code" data-i18n-attr="aria-label:work.reelsLabel">
           <li class="reelitem">
             <div class="player" data-player>
-              <video src="assets/reels/reel-whatsapp-ai.mp4" poster="assets/reels/cover-whatsapp-ai.webp" width="720" height="1280" preload="none" playsinline webkit-playsinline></video>
+              <video src="assets/reels/reel-whatsapp-ai.mp4" data-poster="assets/reels/cover-whatsapp-ai.webp" width="720" height="1280" preload="none" playsinline webkit-playsinline></video>
               <button class="player__btn" type="button" data-player-btn>
                 <svg class="player__icon" viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5.5v13l11-6.5z"/><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
               </button>
@@ -271,7 +271,7 @@
           </li>
           <li class="reelitem">
             <div class="player" data-player>
-              <video src="assets/reels/reel-claude-limits.mp4" poster="assets/reels/cover-claude-limits.webp" width="720" height="1280" preload="none" playsinline webkit-playsinline></video>
+              <video src="assets/reels/reel-claude-limits.mp4" data-poster="assets/reels/cover-claude-limits.webp" width="720" height="1280" preload="none" playsinline webkit-playsinline></video>
               <button class="player__btn" type="button" data-player-btn>
                 <svg class="player__icon" viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5.5v13l11-6.5z"/><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
               </button>
@@ -282,7 +282,7 @@
           </li>
           <li class="reelitem">
             <div class="player" data-player>
-              <video src="assets/reels/reel-reels-no-camera.mp4" poster="assets/reels/cover-reels-no-camera.webp" width="720" height="1280" preload="none" playsinline webkit-playsinline></video>
+              <video src="assets/reels/reel-reels-no-camera.mp4" data-poster="assets/reels/cover-reels-no-camera.webp" width="720" height="1280" preload="none" playsinline webkit-playsinline></video>
               <button class="player__btn" type="button" data-player-btn>
                 <svg class="player__icon" viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5.5v13l11-6.5z"/><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
               </button>

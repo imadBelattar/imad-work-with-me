@@ -160,6 +160,19 @@ const CONFIG = {
     });
   });
 
+  // Covers (posters) load only when the reels come near the screen, so they don't slow the first view
+  const showPoster = (v) => { if (v.dataset.poster && !v.poster) v.poster = v.dataset.poster; };
+  const reelList = document.querySelector(".reels");
+  if ("IntersectionObserver" in window && reelList) {
+    // watch the whole strip: reels hidden to the side of the swipe strip load with the first one
+    const near = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { players.forEach((p) => showPoster(p.video)); near.disconnect(); }
+    }, { rootMargin: "1000px 0px" });
+    near.observe(reelList);
+  } else {
+    players.forEach((p) => showPoster(p.video));
+  }
+
   // Pause a reel that scrolls out of view
   if ("IntersectionObserver" in window && players.length) {
     const watch = new IntersectionObserver((entries) => {
