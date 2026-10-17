@@ -249,41 +249,40 @@
         <p data-i18n="work.intro" data-i18n-html>أغلفة ولقطات من ريلز صنعتها ونشرتها على <bdi>@imad.code</bdi>. ما أعرضه هنا هو عملي الفعلي فقط.</p>
       </header>
 
+      <!-- Reels play on the page. To add one: copy an <li>, set the MP4 (720x1280, H.264, faststart), the cover (poster) and the post URL. -->
       <ul class="reels" aria-label="ريلز @imad.code" data-i18n-attr="aria-label:work.reelsLabel">
-          <li>
-            <a class="reelcard" href="https://www.instagram.com/imad.code/" rel="noopener" target="_blank">
-              <img src="assets/reels/cover-reels-no-camera.webp" width="540" height="960" loading="lazy" decoding="async" alt="غلاف ريل: ريلز لمشروعك بدون كاميرا ولا مونتاج، صوتك فقط والباقي يصنعه Claude" data-i18n-attr="alt:r1.alt">
-              <span class="reelcard__kind" data-i18n="kind.cover">غلاف ريل</span>
-              <span class="reelcard__title" data-i18n="r1.t">ريلز لمشروعك بدون كاميرا ولا مونتاج</span>
-            </a>
+          <li class="reelitem">
+            <div class="player" data-player>
+              <video src="assets/reels/reel-whatsapp-ai.mp4" poster="assets/reels/cover-whatsapp-ai.webp" width="720" height="1280" preload="none" playsinline webkit-playsinline></video>
+              <button class="player__btn" type="button" data-player-btn>
+                <svg class="player__icon" viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5.5v13l11-6.5z"/><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+              </button>
+              <span class="player__bar" aria-hidden="true"><i data-player-bar></i></span>
+            </div>
+            <h3 class="reelitem__title" data-i18n="r1.t">ذكاء اصطناعي يرد على زبائنك في WhatsApp</h3>
+            <a class="reelitem__ig" href="https://www.instagram.com/reel/DekXfEytyRp/" rel="noopener" target="_blank" data-i18n="reel.ig">شاهد على Instagram</a>
           </li>
-          <li>
-            <a class="reelcard" href="https://www.instagram.com/imad.code/" rel="noopener" target="_blank">
-              <img src="assets/reels/frame-no-face-no-editing.webp" width="540" height="960" loading="lazy" decoding="async" alt="لقطة من ريل: لكن لا تريد أن تُظهر وجهك ولا أن تضيع وقتك في المونتاج، مع ساعة وخط زمني للمونتاج" data-i18n-attr="alt:r2.alt">
-              <span class="reelcard__kind" data-i18n="kind.frame">لقطة من ريل</span>
-              <span class="reelcard__title" data-i18n="r2.t">بدون وجه وبدون مونتاج</span>
-            </a>
+          <li class="reelitem">
+            <div class="player" data-player>
+              <video src="assets/reels/reel-claude-limits.mp4" poster="assets/reels/cover-claude-limits.webp" width="720" height="1280" preload="none" playsinline webkit-playsinline></video>
+              <button class="player__btn" type="button" data-player-btn>
+                <svg class="player__icon" viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5.5v13l11-6.5z"/><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+              </button>
+              <span class="player__bar" aria-hidden="true"><i data-player-bar></i></span>
+            </div>
+            <h3 class="reelitem__title" data-i18n="r2.t">رسائل Claude تنتهي بسرعة؟</h3>
+            <a class="reelitem__ig" href="https://www.instagram.com/reel/DefHYEDNnNn/" rel="noopener" target="_blank" data-i18n="reel.ig">شاهد على Instagram</a>
           </li>
-          <li>
-            <a class="reelcard" href="https://www.instagram.com/imad.code/" rel="noopener" target="_blank">
-              <img src="assets/reels/cover-whatsapp-ai.webp" width="540" height="960" loading="lazy" decoding="async" alt="غلاف ريل: ذكاء اصطناعي يرد على زبائنك في WhatsApp، Meta Business Agent لم يظهر في حسابي بعد" data-i18n-attr="alt:r3.alt">
-              <span class="reelcard__kind" data-i18n="kind.cover">غلاف ريل</span>
-              <span class="reelcard__title" data-i18n="r3.t">ذكاء اصطناعي يرد على زبائنك في WhatsApp</span>
-            </a>
-          </li>
-          <li>
-            <a class="reelcard" href="https://www.instagram.com/imad.code/" rel="noopener" target="_blank">
-              <img src="assets/reels/frame-whatsapp-chat.webp" width="540" height="960" loading="lazy" decoding="async" alt="لقطة من ريل: مثال محادثة واتساب بين زبون ومتجر يسأل عن الثمن والتوصيل، مع ذكر المصدر" data-i18n-attr="alt:r4.alt">
-              <span class="reelcard__kind" data-i18n="kind.frame">لقطة من ريل</span>
-              <span class="reelcard__title" data-i18n="r4.t">محادثة زبون مع متجر على واتساب</span>
-            </a>
-          </li>
-          <li>
-            <a class="reelcard" href="https://www.instagram.com/imad.code/" rel="noopener" target="_blank">
-              <img src="assets/reels/cover-claude-limits.webp" width="540" height="960" loading="lazy" decoding="async" alt="غلاف ريل: رسائل Claude تنتهي بسرعة؟ زرّان بجانب زر الإرسال: Model و Effort" data-i18n-attr="alt:r5.alt">
-              <span class="reelcard__kind" data-i18n="kind.cover">غلاف ريل</span>
-              <span class="reelcard__title" data-i18n="r5.t">رسائل Claude تنتهي بسرعة؟</span>
-            </a>
+          <li class="reelitem">
+            <div class="player" data-player>
+              <video src="assets/reels/reel-reels-no-camera.mp4" poster="assets/reels/cover-reels-no-camera.webp" width="720" height="1280" preload="none" playsinline webkit-playsinline></video>
+              <button class="player__btn" type="button" data-player-btn>
+                <svg class="player__icon" viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5.5v13l11-6.5z"/><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+              </button>
+              <span class="player__bar" aria-hidden="true"><i data-player-bar></i></span>
+            </div>
+            <h3 class="reelitem__title" data-i18n="r3.t">ريلز لمشروعك بدون كاميرا ولا مونتاج</h3>
+            <a class="reelitem__ig" href="https://www.instagram.com/reel/Deg56zKNvdI/" rel="noopener" target="_blank" data-i18n="reel.ig">شاهد على Instagram</a>
           </li>
       </ul>
       <a class="reels__more" href="https://www.instagram.com/imad.code/" rel="noopener" target="_blank" data-i18n="w1.cta">شاهد كل الريلز على إنستغرام</a>

@@ -45,6 +45,7 @@ const CONFIG = {
     });
     $$("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
     updateWhatsApp();
+    labelPlayers();
     setCanonical();
     setMenu(false);
     try { localStorage.setItem("lang", lang); } catch (e) {}
@@ -87,6 +88,56 @@ const CONFIG = {
   if (CONFIG.guideUrl) {
     $$("[data-guide]").forEach((box) => (box.hidden = false));
     $$("[data-guide-link]").forEach((a) => (a.href = CONFIG.guideUrl));
+  }
+
+  /* ---------- Reel players: tap to play with sound, tap again to pause, one at a time ---------- */
+  const players = Array.from($$("[data-player]")).map((box) => ({
+    box,
+    video: box.querySelector("video"),
+    btn: box.querySelector("[data-player-btn]"),
+    bar: box.querySelector("[data-player-bar]"),
+    title: box.parentElement.querySelector("[data-i18n]")
+  }));
+
+  function labelPlayers() {
+    players.forEach((p) => {
+      const playing = !p.video.paused && !p.video.ended;
+      p.btn.setAttribute("aria-label", t(playing ? "player.pause" : "player.play") + " " + (p.title ? p.title.textContent : ""));
+    });
+  }
+
+  players.forEach((p) => {
+    const { box, video, btn, bar } = p;
+    btn.addEventListener("click", () => {
+      if (video.paused || video.ended) {
+        players.forEach((o) => { if (o !== p && !o.video.paused) o.video.pause(); });
+        video.muted = false;
+        const started = video.play();
+        if (started && started.catch) started.catch(() => box.classList.remove("is-loading"));
+      } else {
+        video.pause();
+      }
+    });
+    video.addEventListener("play", () => {
+      players.forEach((o) => { if (o !== p && !o.video.paused) o.video.pause(); });
+      box.classList.add("is-playing");
+      labelPlayers();
+    });
+    video.addEventListener("waiting", () => box.classList.add("is-loading"));
+    video.addEventListener("playing", () => box.classList.remove("is-loading"));
+    video.addEventListener("pause", () => { box.classList.remove("is-playing", "is-loading"); labelPlayers(); });
+    video.addEventListener("ended", () => { box.classList.remove("is-playing", "is-loading"); labelPlayers(); });
+    video.addEventListener("timeupdate", () => {
+      if (video.duration) bar.style.transform = "scaleX(" + (video.currentTime / video.duration) + ")";
+    });
+  });
+
+  // Pause a reel that scrolls out of view
+  if ("IntersectionObserver" in window && players.length) {
+    const watch = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (!e.isIntersecting && !e.target.paused) e.target.pause(); });
+    }, { threshold: 0.2 });
+    players.forEach((p) => watch.observe(p.video));
   }
 
   /* ---------- Photo: shown straight from the HTML; the IB initials appear only if it fails to load ---------- */

@@ -308,25 +308,63 @@ html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1
 .example__cta { display: inline-block; margin-block-start: 16px; color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 7px; }
 .note { margin-block-start: 24px; max-inline-size: 40em; color: rgba(232, 237, 242, .8); }
 
-/* Reel gallery: horizontal snap strip on phones, a row of five on desktop */
+/* Reel players: a horizontal snap strip on phones (each video sized to fit the screen), three in a row on desktop */
 .reels {
-  display: grid; grid-auto-flow: column; grid-auto-columns: 62%;
+  --reel-w: min(74%, calc((100svh - 230px) * 9 / 16));
+  display: grid; grid-auto-flow: column; grid-auto-columns: var(--reel-w);
   gap: 14px; overflow-x: auto; overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
   margin-inline: calc(-1 * var(--gutter)); padding: 4px var(--gutter) 16px;
   scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent;
 }
-.reels li { scroll-snap-align: start; }
-.reelcard { display: grid; gap: 10px; text-decoration: none; }
-.reelcard img {
-  inline-size: 100%; aspect-ratio: 9 / 16; block-size: auto; object-fit: cover;
+.reelitem { scroll-snap-align: start; display: grid; align-content: start; gap: 10px; }
+.player {
+  position: relative; aspect-ratio: 9 / 16; overflow: hidden;
   border-radius: 18px; border: 1px solid var(--line-strong);
   background: var(--card);
-  transition: border-color .2s, transform .2s;
+  transition: border-color .2s;
 }
-.reelcard:hover img { border-color: var(--accent); transform: translateY(-3px); }
-.reelcard__kind { font-size: .875rem; color: var(--muted); line-height: 1.2; }
-.reelcard__title { font-weight: 700; line-height: 1.4; margin-block-start: -6px; }
+.player:hover, .player:focus-within { border-color: var(--accent); }
+.player video { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; background: var(--card); }
+.player__btn {
+  /* the whole video is the tap target; the small icon sits in a corner so it doesn't cover the cover's headline */
+  position: absolute; inset: 0; z-index: 1;
+  display: grid; place-items: end; padding: 0 14px 16px;
+  border: 0; background: transparent; cursor: pointer; color: var(--card);
+  -webkit-tap-highlight-color: transparent;
+}
+.player__btn:focus-visible { outline-offset: -4px; border-radius: 18px; }
+.player__icon {
+  inline-size: 44px; block-size: 44px; padding: 12px; border-radius: 50%;
+  background: rgba(232, 237, 242, .92); fill: currentColor;
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, .6);
+  transition: opacity .2s, transform .2s;
+}
+.player__icon .i-play { transform: translateX(1px); }
+.player__icon .i-pause { display: none; }
+/* playing: the icon fades out (with a mouse, hovering shows the pause icon) */
+.player.is-playing .player__icon { opacity: 0; transform: scale(.85); }
+.player.is-playing .i-play { display: none; }
+.player.is-playing .i-pause { display: block; }
+@media (hover: hover) { .player.is-playing:hover .player__icon { opacity: .9; transform: none; } }
+.player.is-loading .player__icon { opacity: 1; transform: none; animation: player-pulse 1s ease-in-out infinite; }
+@keyframes player-pulse { 50% { opacity: .55; } }
+.player__bar {
+  position: absolute; z-index: 2; inset-inline: 0; inset-block-end: 0;
+  block-size: 3px; background: rgba(255, 255, 255, .18); pointer-events: none;
+}
+.player__bar i {
+  display: block; block-size: 100%; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+}
+[dir="rtl"] .player__bar i { transform-origin: right; }
+.reelitem__title { font-size: 1.0625rem; font-weight: 700; line-height: 1.45; }
+.reelitem__ig {
+  justify-self: start; display: inline-flex; align-items: center;
+  min-block-size: 44px; margin-block-start: -10px;
+  font-size: .9375rem; color: var(--accent); font-weight: 600;
+  text-underline-offset: 6px;
+}
 .reels__more {
   display: inline-block; margin-block: 8px 40px;
   color: var(--accent); font-weight: 700; text-underline-offset: 7px;
@@ -450,7 +488,7 @@ html[lang="ar"] .footer__col h2 { font-size: 1rem; }
   .contact { grid-template-columns: auto 1fr; align-items: center; column-gap: 28px; padding: 44px; }
   .contact__actions { grid-column: 1 / -1; }
   .footer__grid { grid-template-columns: 2fr 1fr 1fr; }
-  .reels { grid-auto-columns: 34%; }
+  .reels { --reel-w: min(40%, calc((100svh - 230px) * 9 / 16)); }
 }
 
 @media (min-width: 960px) {
@@ -477,7 +515,7 @@ html[lang="ar"] .footer__col h2 { font-size: 1rem; }
   .steps li:not(:last-child)::after { inset-block: 24px auto; inset-inline: 60px -16px; inline-size: auto; block-size: 1.5px; }
   .steps p { grid-column: auto; }
 
-  .reels { grid-auto-flow: row; grid-template-columns: repeat(5, 1fr); overflow: visible; margin-inline: 0; padding-inline: 0; }
+  .reels { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 300px)); justify-content: start; gap: 24px; overflow: visible; margin-inline: 0; padding-inline: 0; }
   .about { grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
   .facts { padding: 12px 28px; }
   .contact { grid-template-columns: auto 1fr auto; padding: 48px 52px; }
