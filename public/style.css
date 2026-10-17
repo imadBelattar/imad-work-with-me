@@ -317,15 +317,15 @@ html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1
 .player:hover, .player:focus-within { border-color: var(--accent); }
 .player video { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; background: var(--card); }
 .player__btn {
-  /* the whole video is the tap target; the small icon sits in a corner so it doesn't cover the cover's headline */
+  /* the whole video is the tap target; the play/pause icon sits in the middle */
   position: absolute; inset: 0; z-index: 1;
-  display: grid; place-items: end; padding: 0 14px 16px;
+  display: grid; place-items: center; padding: 0;
   border: 0; background: transparent; cursor: pointer; color: var(--card);
   -webkit-tap-highlight-color: transparent;
 }
 .player__btn:focus-visible { outline-offset: -4px; border-radius: 18px; }
 .player__icon {
-  inline-size: 44px; block-size: 44px; padding: 12px; border-radius: 50%;
+  inline-size: 60px; block-size: 60px; padding: 17px; border-radius: 50%;
   background: rgba(232, 237, 242, .92); fill: currentColor;
   box-shadow: 0 8px 24px -6px rgba(0, 0, 0, .6);
   transition: opacity .2s, transform .2s;
@@ -525,7 +525,7 @@ html[lang="ar"] .footer__col h2 { font-size: 1rem; }
   .steps li:not(:last-child)::after { inset-block: 24px auto; inset-inline: 60px -16px; inline-size: auto; block-size: 1.5px; }
   .steps p { grid-column: auto; }
 
-  .reels { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 300px)); justify-content: start; gap: 24px; overflow: visible; margin-inline: 0; padding-inline: 0; }
+  .reels { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 300px)); justify-content: center; gap: 24px; overflow: visible; margin-inline: 0; padding-inline: 0; }
   .about { grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
   .facts { padding: 12px 28px; }
   .contact { grid-template-columns: auto 1fr auto; padding: 48px 52px; }
