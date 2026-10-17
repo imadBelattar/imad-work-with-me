@@ -8,7 +8,7 @@ window.I18N = {
     "wa.offer": "السلام عليكم، أريد الاستفسار عن خدمة: ",
     "wa.o1": "ريلز موشن جرافيك لنشاطي",
     "wa.o2": "موقع ويب لنشاطي",
-    "wa.o3": "إعداد أدوات الذكاء الاصطناعي للمهام المتكررة",
+    "wa.o3": "أتمتة مهامي اليومية المتكررة بالذكاء الاصطناعي",
     "nav.close": "إغلاق القائمة",
     "player.play": "تشغيل الفيديو:",
     "player.pause": "إيقاف الفيديو مؤقتًا:",
@@ -16,8 +16,8 @@ window.I18N = {
   },
 
   fr: {
-    "meta.title": "Imad Belattar | Reels, sites web et IA pour votre activité",
-    "meta.desc": "Pour les freelances et entreprises au Maroc : reels en motion design, sites web de la landing page à la boutique en ligne, et configuration d'IA pour les tâches répétitives.",
+    "meta.title": "Imad Belattar | Sites web, automatisation par l'IA et reels",
+    "meta.desc": "Pour les freelances et entreprises au Maroc : sites web de la landing page à la boutique en ligne, automatisation par l'IA des tâches quotidiennes répétitives, et reels en motion design.",
     "a11y.skip": "Aller au contenu",
 
     "nav.label": "Navigation",
@@ -32,16 +32,16 @@ window.I18N = {
     "nav.close": "Fermer le menu",
     "lang.label": "Langue",
 
-    "hero.h1": "Des reels, des sites web et de l'IA pour votre activité",
+    "hero.h1": "Des sites web, l'automatisation par l'IA et des reels pour votre activité",
     "hero.lead": "Je suis Imad. Je travaille avec les freelances et les entreprises au Maroc.",
-    "hero.l1": "Des reels en motion design à partir de votre enregistrement vocal et de vos photos.",
-    "hero.l2": "Des sites web, de la landing page à la boutique en ligne.",
-    "hero.l3": "La mise en place d'outils d'IA pour vos tâches répétitives.",
+    "hero.l1": "Des sites web, de la landing page à la boutique en ligne.",
+    "hero.l2": "L'automatisation par l'IA de vos tâches quotidiennes répétitives (AI automation) : elles se font toutes seules au lieu de les refaire vous-même.",
+    "hero.l3": "Des reels en motion design à partir de votre enregistrement vocal et de vos photos.",
     "hero.note": "Chaque prestation a un périmètre précis et un livrable clair. On fixe le prix avant de commencer.",
     "hero.photoAlt": "Photo d'Imad Belattar",
-    "frame.c1": "Reels motion",
-    "frame.c2": "Sites web",
-    "frame.c3": "IA au quotidien",
+    "frame.c1": "Sites web",
+    "frame.c2": "Automatisation IA",
+    "frame.c3": "Reels motion",
 
     "btn.wa": "Écrivez-moi sur WhatsApp",
     "btn.ig": "Écrivez-moi sur Instagram",
@@ -55,9 +55,9 @@ window.I18N = {
     "o2.h": "Un site web pour votre activité",
     "o2.p": "Boutique en ligne, site galerie pour vos réalisations, landing page ou catalogue avec un bouton de commande WhatsApp par produit. Un site rapide, pensé pour le mobile.",
     "o2.deliver": "Site en ligne et un moyen simple de mettre à jour le contenu vous-même",
-    "o3.h": "L'IA pour vos tâches répétitives",
-    "o3.p": "Une configuration concrète, avec des outils réellement disponibles au Maroc et inclus dans votre abonnement actuel : modèles de messages, réponses rapides, génération de documents.",
-    "o3.deliver": "La configuration prête à l'emploi et un court guide d'utilisation",
+    "o3.h": "Automatiser vos tâches avec l'IA",
+    "o3.p": "Vos tâches quotidiennes répétitives se font automatiquement, avec des outils disponibles au Maroc et inclus dans votre abonnement actuel. Exemples : génération de documents, modèles prêts pour les messages répétitifs, et un workflow qui refait les mêmes étapes chaque jour.",
+    "o3.deliver": "Le workflow prêt et fonctionnel, avec un court guide d'utilisation",
     "spec.deliver": "Livrable",
     "spec.time": "Délai",
     "spec.timeVal": "Fixé avant de commencer",
@@ -89,7 +89,7 @@ window.I18N = {
     "about.f2t": "Métier",
     "about.f2": "Ingénieur logiciel à plein temps",
     "about.f3t": "Ce que je construis",
-    "about.f3": "Sites web, reels motion et workflows IA",
+    "about.f3": "Sites web, automatisation par l'IA et reels motion",
 
     "how.h": "Comment on travaille",
     "s1.h": "Vous m'envoyez un message",
@@ -115,7 +115,7 @@ window.I18N = {
     "q2.q": "Combien de temps ça prend ?",
     "q2.a": "Le délai est fixé avec le périmètre avant de commencer, et il est écrit dans l'accord.",
     "q3.q": "Qu'est-ce que je dois fournir ?",
-    "q3.a": "<ul><li>Pour les reels : votre enregistrement vocal, vos photos et captures d'écran.</li><li>Pour le site web : les vraies photos de vos produits ou réalisations, les prix et les infos de livraison.</li><li>Pour les outils d'IA : la liste de vos tâches répétitives et les outils que vous utilisez aujourd'hui.</li></ul>",
+    "q3.a": "<ul><li>Pour le site web : les vraies photos de vos produits ou réalisations, les prix et les infos de livraison.</li><li>Pour l'automatisation : la liste de vos tâches répétitives et les outils que vous utilisez aujourd'hui.</li><li>Pour les reels : votre enregistrement vocal, vos photos et captures d'écran.</li></ul>",
     "q4.q": "Puis-je faire des modifications après la livraison ?",
     "q4.a": "Pour le site, vous mettez à jour le contenu vous-même avec la méthode que je vous remets. Pour le reste, les modifications incluses sont celles écrites dans l'accord ; au-delà, on convient d'un nouveau travail.",
     "q5.q": "À qui appartient le nom de domaine ?",
@@ -126,7 +126,7 @@ window.I18N = {
     "contact.h": "Parlons de votre projet",
     "contact.p": "Parlez-moi de votre activité et de votre besoin, je vous propose le périmètre adapté.",
 
-    "footer.tagline": "Reels, sites web et IA pour les entreprises locales au Maroc.",
+    "footer.tagline": "Sites web, automatisation par l'IA et reels pour les entreprises locales au Maroc.",
     "footer.page": "La page",
     "footer.contact": "Contact",
     "footer.email": "E-mail",
@@ -136,6 +136,6 @@ window.I18N = {
     "wa.offer": "Bonjour, j'aimerais en savoir plus sur le service : ",
     "wa.o1": "Reels en motion design pour mon activité",
     "wa.o2": "Un site web pour mon activité",
-    "wa.o3": "L'IA pour mes tâches répétitives"
+    "wa.o3": "Automatiser mes tâches répétitives avec l'IA"
   }
 };
