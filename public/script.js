@@ -3,8 +3,7 @@ const CONFIG = {
   whatsappNumber: "212693877257", // international format, digits only
   email: "",                       // e.g. "hello@example.com"
   guideUrl: "",                    // link to the free PDF guide (Google Drive share link)
-  photoReel: "assets/imad-reel.webp",     // tall photo for the hero frame
-  photoAvatar: "assets/imad-avatar.webp", // square photo for the contact block
+  siteUrl: "https://imad-work-with-me.imad-code-ai.workers.dev/", // the production address (SEO canonical); change when the domain is live
   defaultLang: "ar"
 };
 
@@ -46,6 +45,7 @@ const CONFIG = {
     });
     $$("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
     updateWhatsApp();
+    setCanonical();
     setMenu(false);
     try { localStorage.setItem("lang", lang); } catch (e) {}
     try {
@@ -53,6 +53,13 @@ const CONFIG = {
       if (lang === CONFIG.defaultLang) url.searchParams.delete("lang"); else url.searchParams.set("lang", lang);
       history.replaceState(null, "", url);
     } catch (e) {}
+  }
+
+  /* ---------- SEO: one canonical address per language, always the production site (never a preview) ---------- */
+  function setCanonical() {
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement("link"); link.rel = "canonical"; document.head.appendChild(link); }
+    link.href = CONFIG.siteUrl + (lang === CONFIG.defaultLang ? "" : "?lang=" + lang);
   }
 
   /* ---------- WhatsApp / email / guide links ---------- */
@@ -82,19 +89,16 @@ const CONFIG = {
     $$("[data-guide-link]").forEach((a) => (a.href = CONFIG.guideUrl));
   }
 
-  /* ---------- Photo (falls back to the IB initials if missing) ---------- */
-  function setPhoto(img, src) {
-    if (!src) return;
-    img.addEventListener("load", () => {
-      img.hidden = false;
+  /* ---------- Photo: shown straight from the HTML; the IB initials appear only if it fails to load ---------- */
+  $$("img[data-photo]").forEach((img) => {
+    const showInitials = () => {
+      img.hidden = true;
       const fallback = img.parentElement.querySelector("[data-initials]");
-      if (fallback) fallback.hidden = true;
-    }, { once: true });
-    img.src = src;
-  }
-  const [reelImg, avatarImg] = $$("img[data-photo]");
-  if (reelImg) setPhoto(reelImg, CONFIG.photoReel);
-  if (avatarImg) setPhoto(avatarImg, CONFIG.photoAvatar);
+      if (fallback) fallback.hidden = false;
+    };
+    if (img.complete && img.naturalWidth === 0) showInitials();
+    else img.addEventListener("error", showInitials, { once: true });
+  });
 
   /* ---------- Navbar ---------- */
   const nav = document.querySelector("[data-nav]");
