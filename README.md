@@ -2,6 +2,8 @@
 
 One-page services site for Imad Belattar (@imad.code). Plain HTML + CSS + a little JS, no build step.
 
+Working on this repo with Claude: the rules, workflow and testing notes are in `CLAUDE.md`.
+
 ## Files
 Site files live in `public/` (only that folder is published). `worker/index.js` is a small Worker that runs only for `/assets/reels/*` to answer byte-range requests (iPhone Safari won't play MP4 without them).
 - `index.html` — all the copy (Arabic, RTL). `TODO(imad)` comments mark text that needs approval.
