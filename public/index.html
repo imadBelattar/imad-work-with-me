@@ -125,6 +125,7 @@
     <nav class="nav__links" data-i18n-attr="aria-label:nav.label" aria-label="التنقل">
       <a href="#offers" data-i18n="nav.offers">العروض</a>
       <a href="#examples" data-i18n="nav.work">الأعمال</a>
+      <a href="#guides" data-i18n="nav.guides">أدلة مجانية</a>
       <a href="#about" data-i18n="nav.about">من أنا</a>
       <a href="#how" data-i18n="nav.how">كيف نشتغل</a>
       <a href="#faq" data-i18n="nav.faq">الأسئلة</a>
@@ -145,6 +146,7 @@
   <div class="nav__panel" id="nav-panel" data-menu hidden>
     <a href="#offers" data-i18n="nav.offers">العروض</a>
     <a href="#examples" data-i18n="nav.work">الأعمال</a>
+    <a href="#guides" data-i18n="nav.guides">أدلة مجانية</a>
     <a href="#about" data-i18n="nav.about">من أنا</a>
     <a href="#how" data-i18n="nav.how">كيف نشتغل</a>
     <a href="#faq" data-i18n="nav.faq">الأسئلة</a>
@@ -287,20 +289,27 @@
       </ul>
       <a class="reels__more" href="https://www.instagram.com/imad.code/" rel="noopener" target="_blank" data-i18n="w1.cta">شاهد كل الريلز على إنستغرام</a>
 
-      <div class="examples">
-        <div class="example" data-guide hidden>
-          <h3 data-i18n="w2.h">دليل PDF مجاني</h3>
-          <p data-i18n="w2.p">دليل مجاني بصيغة PDF.</p>
-          <a class="example__link" href="#" data-guide-link rel="noopener" target="_blank" data-i18n="w2.cta">حمّل الدليل</a>
-        </div>
-      </div>
-
       <p class="note" data-i18n="work.note">عند إنجاز مشاريع لعملاء، سأعرضها هنا بعد موافقتهم الكتابية.</p>
     </div>
   </section>
 
+  <!-- ============ Free guides (cards come from guides.js) ============ -->
+  <section class="section" id="guides" aria-labelledby="guides-h">
+    <div class="wrap">
+      <header class="section__head">
+        <h2 id="guides-h" data-i18n="guides.h">أدلة مجانية</h2>
+        <p data-i18n="guides.intro">أدلة قصيرة بصيغة PDF، تطبّقها بنفسك خطوة بخطوة.</p>
+      </header>
+      <ul class="guides" data-guides></ul>
+      <div class="guides__cta">
+        <p data-i18n="guides.ctaQ">تريد أن أطبّق هذا لمشروعك؟</p>
+        <a class="btn btn--primary" href="#contact" data-whatsapp data-i18n="btn.wa">راسلني على واتساب</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ Who am I ============ -->
-  <section class="section" id="about" aria-labelledby="about-h">
+  <section class="section section--tint" id="about" aria-labelledby="about-h">
     <div class="wrap about">
       <div class="about__text">
         <h2 id="about-h" data-i18n="about.h">من أنا</h2>
@@ -317,7 +326,7 @@
   </section>
 
   <!-- ============ How it works (a real sequence, so numbered) ============ -->
-  <section class="section section--tint" id="how" aria-labelledby="how-h">
+  <section class="section" id="how" aria-labelledby="how-h">
     <div class="wrap">
       <header class="section__head">
         <h2 id="how-h" data-i18n="how.h">كيف نشتغل</h2>
@@ -332,7 +341,7 @@
   </section>
 
   <!-- ============ Why trust me ============ -->
-  <section class="section" id="trust" aria-labelledby="trust-h">
+  <section class="section section--tint" id="trust" aria-labelledby="trust-h">
     <div class="wrap">
       <header class="section__head">
         <h2 id="trust-h" data-i18n="trust.h">أُثبت ولا أدّعي</h2>
@@ -346,7 +355,7 @@
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="section section--tint" id="faq" aria-labelledby="faq-h">
+  <section class="section" id="faq" aria-labelledby="faq-h">
     <div class="wrap wrap--narrow">
       <header class="section__head">
         <h2 id="faq-h" data-i18n="faq.h">أسئلة شائعة</h2>
@@ -364,7 +373,7 @@
   </section>
 
   <!-- ============ Contact ============ -->
-  <section class="section" id="contact" aria-labelledby="contact-h">
+  <section class="section section--tint" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="contact">
         <div class="avatar" aria-hidden="true">
@@ -398,6 +407,7 @@
         <h2 id="f-page" data-i18n="footer.page">الصفحة</h2>
         <a href="#offers" data-i18n="nav.offers">العروض</a>
         <a href="#examples" data-i18n="nav.work">الأعمال</a>
+        <a href="#guides" data-i18n="nav.guides">أدلة مجانية</a>
         <a href="#about" data-i18n="nav.about">من أنا</a>
         <a href="#how" data-i18n="nav.how">كيف نشتغل</a>
         <a href="#faq" data-i18n="nav.faq">الأسئلة</a>
@@ -416,6 +426,7 @@
 </footer>
 
 <script src="i18n.js" defer></script>
+<script src="guides.js" defer></script>
 <script src="script.js" defer></script>
 </body>
 </html>

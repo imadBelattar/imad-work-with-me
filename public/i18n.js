@@ -11,7 +11,8 @@ window.I18N = {
     "wa.o3": "إعداد ذكاء اصطناعي للمهام المتكررة",
     "nav.close": "إغلاق القائمة",
     "player.play": "تشغيل الفيديو:",
-    "player.pause": "إيقاف الفيديو مؤقتًا:"
+    "player.pause": "إيقاف الفيديو مؤقتًا:",
+    "guides.btn": "حمّل الدليل مجانًا"
   },
 
   fr: {
@@ -22,6 +23,7 @@ window.I18N = {
     "nav.label": "Navigation",
     "nav.offers": "Offres",
     "nav.work": "Réalisations",
+    "nav.guides": "Guides gratuits",
     "nav.about": "À propos",
     "nav.how": "Méthode",
     "nav.faq": "FAQ",
@@ -70,9 +72,10 @@ window.I18N = {
     "player.play": "Lire la vidéo :",
     "player.pause": "Mettre en pause :",
     "w1.cta": "Voir tous les reels sur Instagram",
-    "w2.h": "Guide PDF gratuit",
-    "w2.p": "Un guide gratuit au format PDF.",
-    "w2.cta": "Télécharger le guide",
+    "guides.h": "Guides gratuits",
+    "guides.intro": "De courts guides PDF à appliquer vous-même, étape par étape.",
+    "guides.btn": "Télécharger le guide gratuitement",
+    "guides.ctaQ": "Vous voulez que je le mette en place pour votre activité ?",
     "work.note": "Quand je réaliserai des projets pour des clients, je les montrerai ici avec leur accord écrit.",
 
     "about.h": "Qui suis-je",

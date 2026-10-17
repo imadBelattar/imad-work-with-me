@@ -290,22 +290,6 @@ html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1
 .offer__link:hover { text-decoration-color: var(--accent); }
 
 /* Examples */
-.examples { display: grid; gap: 16px; }
-.example {
-  display: block; padding: 24px 22px;
-  border: 1px solid var(--line); border-radius: var(--r-lg);
-  text-decoration: none;
-}
-.example h3 { font-size: 1.1875rem; font-weight: 700; }
-.example p { margin-block-start: 6px; max-inline-size: 40em; color: rgba(232, 237, 242, .88); }
-.example__link { display: inline-block; margin-block-start: 10px; font-weight: 700; text-underline-offset: 6px; }
-.example--main {
-  background: var(--card); border-color: var(--line-strong);
-  padding: 32px 24px; transition: border-color .2s;
-}
-.example--main:hover { border-color: var(--accent); }
-.example--main h3 { font-size: 1.625rem; }
-.example__cta { display: inline-block; margin-block-start: 16px; color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 7px; }
 .note { margin-block-start: 24px; max-inline-size: 40em; color: rgba(232, 237, 242, .8); }
 
 /* Reel players: a horizontal snap strip on phones (each video sized to fit the screen), three in a row on desktop */
@@ -366,12 +350,31 @@ html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1
   text-underline-offset: 6px;
 }
 .reels__more {
-  display: inline-block; margin-block: 8px 40px;
+  display: inline-flex; align-items: center; min-block-size: 44px; margin-block-start: 4px;
   color: var(--accent); font-weight: 700; text-underline-offset: 7px;
 }
 
-/* empty while the free-guide card is hidden */
-.examples:not(:has(.example:not([hidden]))) { display: none; }
+/* Free guides */
+.guides { display: grid; gap: 16px; }
+.guide {
+  display: grid; grid-template-columns: 112px 1fr; gap: 16px 18px; align-items: start;
+  padding: 18px; background: var(--card);
+  border: 1px solid var(--line); border-radius: var(--r-lg);
+}
+.guide__cover {
+  inline-size: 100%; block-size: auto; aspect-ratio: 4 / 5; object-fit: cover;
+  border-radius: 12px; border: 1px solid var(--line-strong); background: var(--card-2);
+}
+.guide__body { display: grid; gap: 6px; }
+.guide h3 { font-size: 1.125rem; font-weight: 700; line-height: 1.5; }
+.guide__line { color: rgba(232, 237, 242, .88); font-size: 1rem; }
+.guide__meta { color: var(--muted); font-size: .9375rem; }
+.guide__btn { grid-column: 1 / -1; white-space: normal; text-align: center; border-color: var(--accent); }
+.guides__cta {
+  margin-block-start: 32px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px;
+}
+.guides__cta p { font-weight: 700; font-size: 1.1875rem; }
 
 /* Who am I */
 .about { display: grid; gap: 32px; }
@@ -480,10 +483,9 @@ html[lang="ar"] .footer__col h2 { font-size: 1rem; }
 @media (min-width: 720px) {
   :root { --gutter: 28px; }
   .offers { grid-template-columns: repeat(2, 1fr); }
-  .examples { grid-template-columns: repeat(2, 1fr); }
-  .example--main { grid-column: 1 / -1; }
-  /* while the guide card is hidden, let the remaining card take the full row */
-  .examples:has([data-guide][hidden]) .example:last-child { grid-column: 1 / -1; }
+  .guides { grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); }
+  .guide { grid-template-columns: 150px 1fr; padding: 22px; }
+  .guide__btn { grid-column: 2; justify-self: start; }
   .trust { grid-template-columns: repeat(3, 1fr); }
   .contact { grid-template-columns: auto 1fr; align-items: center; column-gap: 28px; padding: 44px; }
   .contact__actions { grid-column: 1 / -1; }
@@ -507,7 +509,6 @@ html[lang="ar"] .footer__col h2 { font-size: 1rem; }
   .section { padding-block: 112px; }
   .offers { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .offer { padding: 30px 26px; }
-  .example--main { padding: 40px 36px; }
 
   .steps { grid-template-columns: repeat(4, 1fr); column-gap: 28px; }
   .steps li { grid-template-columns: 1fr; row-gap: 10px; padding-block: 0; }

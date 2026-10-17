@@ -2,7 +2,6 @@
 const CONFIG = {
   whatsappNumber: "212693877257", // international format, digits only
   email: "",                       // e.g. "hello@example.com"
-  guideUrl: "",                    // link to the free PDF guide (Google Drive share link)
   siteUrl: "https://imadbelattar.dev/", // the production address (SEO canonical)
   defaultLang: "ar"
 };
@@ -46,6 +45,7 @@ const CONFIG = {
     $$("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
     updateWhatsApp();
     labelPlayers();
+    renderGuides();
     setCanonical();
     setMenu(false);
     try { localStorage.setItem("lang", lang); } catch (e) {}
@@ -63,7 +63,7 @@ const CONFIG = {
     link.href = CONFIG.siteUrl + (lang === CONFIG.defaultLang ? "" : "?lang=" + lang);
   }
 
-  /* ---------- WhatsApp / email / guide links ---------- */
+  /* ---------- WhatsApp / email links ---------- */
   const number = CONFIG.whatsappNumber.replace(/\D/g, "");
   const wa = (text) => "https://wa.me/" + number + "?text=" + encodeURIComponent(text);
 
@@ -85,9 +85,37 @@ const CONFIG = {
   if (CONFIG.email) {
     $$("[data-email]").forEach((a) => { a.href = "mailto:" + CONFIG.email; a.hidden = false; });
   }
-  if (CONFIG.guideUrl) {
-    $$("[data-guide]").forEach((box) => (box.hidden = false));
-    $$("[data-guide-link]").forEach((a) => (a.href = CONFIG.guideUrl));
+  /* ---------- Free guides: cards built from window.GUIDES (guides.js) ---------- */
+  const guideList = document.querySelector("[data-guides]");
+  function renderGuides() {
+    if (!guideList) return;
+    const pick = (v) => (v && typeof v === "object" ? v[lang] || v.ar || "" : v || "");
+    guideList.textContent = "";
+    (window.GUIDES || []).forEach((g, i) => {
+      const li = document.createElement("li");
+      li.className = "guide";
+      const img = document.createElement("img");
+      img.className = "guide__cover";
+      img.src = g.cover;
+      if (g.coverLarge) { img.srcset = g.cover + " 480w, " + g.coverLarge + " 800w"; img.sizes = "(min-width: 720px) 150px, 112px"; }
+      img.width = 480; img.height = 600; img.alt = ""; img.loading = "lazy"; img.decoding = "async";
+      const body = document.createElement("div");
+      body.className = "guide__body";
+      const h = document.createElement("h3");
+      h.id = "guide-" + i; h.textContent = pick(g.title);
+      const line = document.createElement("p");
+      line.className = "guide__line"; line.textContent = pick(g.line);
+      body.append(h, line);
+      if (g.meta) { const m = document.createElement("p"); m.className = "guide__meta"; m.textContent = pick(g.meta); body.append(m); }
+      const a = document.createElement("a");
+      a.className = "btn btn--ghost guide__btn";
+      a.href = g.url; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = t("guides.btn");
+      a.setAttribute("aria-describedby", h.id);
+      li.append(img, body, a);
+      guideList.append(li);
+    });
+    guideList.closest("section").hidden = !guideList.children.length;
   }
 
   /* ---------- Reel players: tap to play with sound, tap again to pause, one at a time ---------- */
@@ -185,7 +213,7 @@ const CONFIG = {
         links.forEach((a) => a.setAttribute("aria-current", String(a.hash === "#" + entry.target.id)));
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    ["offers", "examples", "about", "how", "trust", "faq", "contact", "top"].forEach((id) => {
+    ["offers", "examples", "guides", "about", "how", "trust", "faq", "contact", "top"].forEach((id) => {
       const s = document.getElementById(id);
       if (s) io.observe(s);
     });
