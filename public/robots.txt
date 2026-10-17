@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://imad-work-with-me.imad-code-ai.workers.dev/sitemap.xml
