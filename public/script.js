@@ -3,7 +3,7 @@ const CONFIG = {
   whatsappNumber: "212693877257", // international format, digits only
   email: "",                       // e.g. "hello@example.com"
   guideUrl: "",                    // link to the free PDF guide (Google Drive share link)
-  siteUrl: "https://imad-work-with-me.imad-code-ai.workers.dev/", // the production address (SEO canonical); change when the domain is live
+  siteUrl: "https://imadbelattar.dev/", // the production address (SEO canonical)
   defaultLang: "ar"
 };
 

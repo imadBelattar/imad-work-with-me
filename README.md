@@ -18,7 +18,7 @@ cd public && python3 -m http.server 8000
 Then open http://localhost:8000
 
 ## Deploy
-Cloudflare Workers (static assets), connected to this repo. Every push to `main` deploys automatically.
+Cloudflare Workers (static assets), connected to this repo. Every push to `main` deploys automatically to https://imadbelattar.dev (domain registered at Name.com, nameservers on Cloudflare).
 Config: `wrangler.jsonc` (the `name` must match the Cloudflare project name).
 
 ## Languages
@@ -27,8 +27,8 @@ To add a language, copy the `fr` block in `i18n.js`, translate it, and add a `da
 
 ## SEO
 - Canonical address per language (set in `script.js`), `hreflang` links for Arabic and French, Open Graph share preview, structured data (Person + ProfessionalService), `robots.txt` and `sitemap.xml`.
-- The production address appears in: `index.html` (hreflang, og:url, og:image, JSON-LD), `script.js` (`CONFIG.siteUrl`), `robots.txt`, `sitemap.xml`. When the custom domain is live, replace it everywhere.
-- Then add the site to Google Search Console and submit `sitemap.xml`.
+- The production address is https://imadbelattar.dev/ (custom domain on the Worker, declared in `wrangler.jsonc`). It appears in: `index.html` (hreflang, og:url, og:image, JSON-LD), `script.js` (`CONFIG.siteUrl`), `robots.txt`, `sitemap.xml`. If it ever changes, replace it everywhere.
+- Add the site to Google Search Console and submit `sitemap.xml`.
 
 ## Review flow
 Bigger changes go on a branch + pull request. Cloudflare builds a preview address for the branch; merge into `main` once approved.
