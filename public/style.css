@@ -339,15 +339,39 @@ html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1
 @media (hover: hover) { .player.is-playing:hover .player__icon { opacity: .9; transform: none; } }
 .player.is-loading .player__icon { opacity: 1; transform: none; animation: player-pulse 1s ease-in-out infinite; }
 @keyframes player-pulse { 50% { opacity: .55; } }
-.player__bar {
-  position: absolute; z-index: 2; inset-inline: 0; inset-block-end: 0;
-  block-size: 3px; background: rgba(255, 255, 255, .18); pointer-events: none;
+/* Scrubber: a native range input in the brand teal. The input is 28px tall (easy to tap); the visible line is 4px. */
+.player__seek {
+  --p: 0%;
+  position: absolute; z-index: 2; inset-inline: 10px; inset-block-end: 6px;
+  inline-size: calc(100% - 20px); block-size: 28px; margin: 0; padding: 0;
+  background: transparent; cursor: pointer; touch-action: none;
+  -webkit-appearance: none; appearance: none;
+  opacity: 0; visibility: hidden; transition: opacity .2s;
+  -webkit-tap-highlight-color: transparent;
 }
-.player__bar i {
-  display: block; block-size: 100%; background: var(--accent);
-  transform: scaleX(0); transform-origin: left;
+.player.is-ready .player__seek { opacity: 1; visibility: visible; }
+.player__seek:focus-visible { outline-offset: 2px; }
+.player__seek::-webkit-slider-runnable-track {
+  block-size: 4px; border-radius: 4px;
+  background: linear-gradient(to right, var(--accent) var(--p), rgba(255, 255, 255, .28) var(--p));
 }
-[dir="rtl"] .player__bar i { transform-origin: right; }
+.player__seek::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  inline-size: 14px; block-size: 14px; margin-block-start: -5px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--card);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+}
+.player__seek::-moz-range-track { block-size: 4px; border-radius: 4px; background: rgba(255, 255, 255, .28); }
+.player__seek::-moz-range-progress { block-size: 4px; border-radius: 4px; background: var(--accent); }
+.player__seek::-moz-range-thumb {
+  inline-size: 14px; block-size: 14px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--card); box-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+}
+/* a soft shade behind the line so it stays visible on light frames */
+.player.is-ready::after {
+  content: ""; position: absolute; z-index: 1; inset: auto 0 0; block-size: 56px; pointer-events: none;
+  background: linear-gradient(to top, rgba(15, 20, 26, .55), rgba(15, 20, 26, 0));
+}
 .reelitem__title { font-size: 1.0625rem; font-weight: 700; line-height: 1.45; }
 .reelitem__ig {
   justify-self: start; display: inline-flex; align-items: center;

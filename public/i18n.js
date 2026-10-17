@@ -12,6 +12,7 @@ window.I18N = {
     "nav.close": "إغلاق القائمة",
     "player.play": "تشغيل الفيديو:",
     "player.pause": "إيقاف الفيديو مؤقتًا:",
+    "player.seek": "التقدم في الفيديو",
     "guides.btn": "حمّل الدليل مجانًا"
   },
 
@@ -74,6 +75,7 @@ window.I18N = {
     "reel.ig": "Voir sur Instagram",
     "player.play": "Lire la vidéo :",
     "player.pause": "Mettre en pause :",
+    "player.seek": "Position dans la vidéo",
     "w1.cta": "Voir tous les reels sur Instagram",
     "guides.h": "Guides gratuits",
     "guides.intro": "De courts guides PDF à appliquer vous-même, étape par étape.",

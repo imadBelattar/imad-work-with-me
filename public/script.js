@@ -123,7 +123,7 @@ const CONFIG = {
     box,
     video: box.querySelector("video"),
     btn: box.querySelector("[data-player-btn]"),
-    bar: box.querySelector("[data-player-bar]"),
+    seek: box.querySelector("[data-player-seek]"),
     title: box.parentElement.querySelector("[data-i18n]")
   }));
 
@@ -135,7 +135,7 @@ const CONFIG = {
   }
 
   players.forEach((p) => {
-    const { box, video, btn, bar } = p;
+    const { box, video, btn, seek } = p;
     btn.addEventListener("click", () => {
       if (video.paused || video.ended) {
         players.forEach((o) => { if (o !== p && !o.video.paused) o.video.pause(); });
@@ -155,9 +155,35 @@ const CONFIG = {
     video.addEventListener("playing", () => box.classList.remove("is-loading"));
     video.addEventListener("pause", () => { box.classList.remove("is-playing", "is-loading"); labelPlayers(); });
     video.addEventListener("ended", () => { box.classList.remove("is-playing", "is-loading"); labelPlayers(); });
-    video.addEventListener("timeupdate", () => {
-      if (video.duration) bar.style.transform = "scaleX(" + (video.currentTime / video.duration) + ")";
+
+    // Scrubber: shows where the reel is; tap or drag it to jump to any moment (appears once the video has loaded)
+    const clock = (sec) => Math.floor(sec / 60) + ":" + String(Math.floor(sec % 60)).padStart(2, "0");
+    let dragging = false;
+    const paint = () => {
+      if (!video.duration) return;
+      const f = video.currentTime / video.duration;
+      if (!dragging) seek.value = Math.round(f * 1000);
+      seek.style.setProperty("--p", (seek.value / 10) + "%");
+      seek.setAttribute("aria-valuetext", clock(video.currentTime) + " / " + clock(video.duration));
+    };
+    const jump = (f) => {
+      if (!video.duration) return;
+      f = Math.min(1, Math.max(0, f));
+      seek.value = Math.round(f * 1000);
+      video.currentTime = f * video.duration;
+      paint();
+    };
+    video.addEventListener("loadedmetadata", () => { box.classList.add("is-ready"); paint(); });
+    video.addEventListener("timeupdate", paint);
+    video.addEventListener("seeked", paint);
+    seek.addEventListener("input", () => jump(seek.value / 1000));
+    seek.addEventListener("pointerdown", (e) => {
+      // iPhone Safari only moves a slider by its thumb; this makes a tap anywhere on the line jump there
+      dragging = true;
+      const r = seek.getBoundingClientRect();
+      jump((e.clientX - r.left) / r.width);
     });
+    ["pointerup", "pointercancel", "change"].forEach((ev) => seek.addEventListener(ev, () => { dragging = false; paint(); }));
   });
 
   // Covers (posters) load only when the reels come near the screen, so they don't slow the first view
