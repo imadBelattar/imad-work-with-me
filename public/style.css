@@ -315,7 +315,9 @@ html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1
   transition: border-color .2s;
 }
 .player:hover, .player:focus-within { border-color: var(--accent); }
-.player video { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; background: var(--card); }
+/* 0.8% taller than the frame, anchored at the top: hides the progress line drawn into the bottom 7px of each reel
+   (the scrubber below replaces it); object-fit trims the same tiny amount from the sides */
+.player video { position: absolute; inset: 0 0 auto; inline-size: 100%; block-size: 100.8%; object-fit: cover; background: var(--card); }
 .player__btn {
   /* the whole video is the tap target; the play/pause icon sits in the middle */
   position: absolute; inset: 0; z-index: 1;
