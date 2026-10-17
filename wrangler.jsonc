@@ -1,9 +1,14 @@
 {
-  // Cloudflare Workers config: serves the static files in ./public, no server code.
+  // Cloudflare Workers config: serves the static files in ./public.
+  // A small Worker (worker/index.js) runs only for the reel videos, to answer byte-range requests (iPhone Safari needs them).
   "name": "imad-work-with-me",
   "compatibility_date": "2026-10-16",
+  "main": "worker/index.js",
   "assets": {
-    "directory": "./public"
+    "directory": "./public",
+    "binding": "ASSETS",
+    // Only these paths go through the Worker; everything else (and _redirects) is plain static assets
+    "run_worker_first": ["/assets/reels/*"]
   },
   // Production address: the custom domain (Cloudflare creates its DNS record and HTTPS certificate)
   "routes": [

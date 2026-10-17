@@ -2,7 +2,6 @@
 const CONFIG = {
   whatsappNumber: "212693877257", // international format, digits only
   email: "",                       // e.g. "hello@example.com"
-  guideUrl: "",                    // link to the free PDF guide (Google Drive share link)
   siteUrl: "https://imadbelattar.dev/", // the production address (SEO canonical)
   defaultLang: "ar"
 };
@@ -45,6 +44,8 @@ const CONFIG = {
     });
     $$("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
     updateWhatsApp();
+    labelPlayers();
+    renderGuides();
     setCanonical();
     setMenu(false);
     try { localStorage.setItem("lang", lang); } catch (e) {}
@@ -62,7 +63,7 @@ const CONFIG = {
     link.href = CONFIG.siteUrl + (lang === CONFIG.defaultLang ? "" : "?lang=" + lang);
   }
 
-  /* ---------- WhatsApp / email / guide links ---------- */
+  /* ---------- WhatsApp / email links ---------- */
   const number = CONFIG.whatsappNumber.replace(/\D/g, "");
   const wa = (text) => "https://wa.me/" + number + "?text=" + encodeURIComponent(text);
 
@@ -84,9 +85,126 @@ const CONFIG = {
   if (CONFIG.email) {
     $$("[data-email]").forEach((a) => { a.href = "mailto:" + CONFIG.email; a.hidden = false; });
   }
-  if (CONFIG.guideUrl) {
-    $$("[data-guide]").forEach((box) => (box.hidden = false));
-    $$("[data-guide-link]").forEach((a) => (a.href = CONFIG.guideUrl));
+  /* ---------- Free guides: cards built from window.GUIDES (guides.js) ---------- */
+  const guideList = document.querySelector("[data-guides]");
+  function renderGuides() {
+    if (!guideList) return;
+    const pick = (v) => (v && typeof v === "object" ? v[lang] || v.ar || "" : v || "");
+    guideList.textContent = "";
+    (window.GUIDES || []).forEach((g, i) => {
+      const li = document.createElement("li");
+      li.className = "guide";
+      const img = document.createElement("img");
+      img.className = "guide__cover";
+      img.src = g.cover;
+      if (g.coverLarge) { img.srcset = g.cover + " 480w, " + g.coverLarge + " 800w"; img.sizes = "(min-width: 720px) 150px, 112px"; }
+      img.width = 480; img.height = 600; img.alt = ""; img.loading = "lazy"; img.decoding = "async";
+      const body = document.createElement("div");
+      body.className = "guide__body";
+      const h = document.createElement("h3");
+      h.id = "guide-" + i; h.textContent = pick(g.title);
+      const line = document.createElement("p");
+      line.className = "guide__line"; line.textContent = pick(g.line);
+      body.append(h, line);
+      if (g.meta) { const m = document.createElement("p"); m.className = "guide__meta"; m.textContent = pick(g.meta); body.append(m); }
+      const a = document.createElement("a");
+      a.className = "btn btn--ghost guide__btn";
+      a.href = g.url; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = t("guides.btn");
+      a.setAttribute("aria-describedby", h.id);
+      li.append(img, body, a);
+      guideList.append(li);
+    });
+    guideList.closest("section").hidden = !guideList.children.length;
+  }
+
+  /* ---------- Reel players: tap to play with sound, tap again to pause, one at a time ---------- */
+  const players = Array.from($$("[data-player]")).map((box) => ({
+    box,
+    video: box.querySelector("video"),
+    btn: box.querySelector("[data-player-btn]"),
+    seek: box.querySelector("[data-player-seek]"),
+    title: box.parentElement.querySelector("[data-i18n]")
+  }));
+
+  function labelPlayers() {
+    players.forEach((p) => {
+      const playing = !p.video.paused && !p.video.ended;
+      p.btn.setAttribute("aria-label", t(playing ? "player.pause" : "player.play") + " " + (p.title ? p.title.textContent : ""));
+    });
+  }
+
+  players.forEach((p) => {
+    const { box, video, btn, seek } = p;
+    btn.addEventListener("click", () => {
+      if (video.paused || video.ended) {
+        players.forEach((o) => { if (o !== p && !o.video.paused) o.video.pause(); });
+        video.muted = false;
+        const started = video.play();
+        if (started && started.catch) started.catch(() => box.classList.remove("is-loading"));
+      } else {
+        video.pause();
+      }
+    });
+    video.addEventListener("play", () => {
+      players.forEach((o) => { if (o !== p && !o.video.paused) o.video.pause(); });
+      box.classList.add("is-playing");
+      labelPlayers();
+    });
+    video.addEventListener("waiting", () => box.classList.add("is-loading"));
+    video.addEventListener("playing", () => box.classList.remove("is-loading"));
+    video.addEventListener("pause", () => { box.classList.remove("is-playing", "is-loading"); labelPlayers(); });
+    video.addEventListener("ended", () => { box.classList.remove("is-playing", "is-loading"); labelPlayers(); });
+
+    // Scrubber: shows where the reel is; tap or drag it to jump to any moment (appears once the video has loaded)
+    const clock = (sec) => Math.floor(sec / 60) + ":" + String(Math.floor(sec % 60)).padStart(2, "0");
+    let dragging = false;
+    const paint = () => {
+      if (!video.duration) return;
+      const f = video.currentTime / video.duration;
+      if (!dragging) seek.value = Math.round(f * 1000);
+      seek.style.setProperty("--p", (seek.value / 10) + "%");
+      seek.setAttribute("aria-valuetext", clock(video.currentTime) + " / " + clock(video.duration));
+    };
+    const jump = (f) => {
+      if (!video.duration) return;
+      f = Math.min(1, Math.max(0, f));
+      seek.value = Math.round(f * 1000);
+      video.currentTime = f * video.duration;
+      paint();
+    };
+    video.addEventListener("loadedmetadata", () => { box.classList.add("is-ready"); paint(); });
+    video.addEventListener("timeupdate", paint);
+    video.addEventListener("seeked", paint);
+    seek.addEventListener("input", () => jump(seek.value / 1000));
+    seek.addEventListener("pointerdown", (e) => {
+      // iPhone Safari only moves a slider by its thumb; this makes a tap anywhere on the line jump there
+      dragging = true;
+      const r = seek.getBoundingClientRect();
+      jump((e.clientX - r.left) / r.width);
+    });
+    ["pointerup", "pointercancel", "change"].forEach((ev) => seek.addEventListener(ev, () => { dragging = false; paint(); }));
+  });
+
+  // Covers (posters) load only when the reels come near the screen, so they don't slow the first view
+  const showPoster = (v) => { if (v.dataset.poster && !v.poster) v.poster = v.dataset.poster; };
+  const reelList = document.querySelector(".reels");
+  if ("IntersectionObserver" in window && reelList) {
+    // watch the whole strip: reels hidden to the side of the swipe strip load with the first one
+    const near = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { players.forEach((p) => showPoster(p.video)); near.disconnect(); }
+    }, { rootMargin: "1000px 0px" });
+    near.observe(reelList);
+  } else {
+    players.forEach((p) => showPoster(p.video));
+  }
+
+  // Pause a reel that scrolls out of view
+  if ("IntersectionObserver" in window && players.length) {
+    const watch = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (!e.isIntersecting && !e.target.paused) e.target.pause(); });
+    }, { threshold: 0.2 });
+    players.forEach((p) => watch.observe(p.video));
   }
 
   /* ---------- Photo: shown straight from the HTML; the IB initials appear only if it fails to load ---------- */
@@ -134,7 +252,7 @@ const CONFIG = {
         links.forEach((a) => a.setAttribute("aria-current", String(a.hash === "#" + entry.target.id)));
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    ["offers", "examples", "about", "how", "trust", "faq", "contact", "top"].forEach((id) => {
+    ["offers", "examples", "guides", "about", "how", "trust", "faq", "contact", "top"].forEach((id) => {
       const s = document.getElementById(id);
       if (s) io.observe(s);
     });

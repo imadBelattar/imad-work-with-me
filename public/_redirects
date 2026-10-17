@@ -1,0 +1,4 @@
+# Short links (Cloudflare Workers static assets, see https://developers.cloudflare.com/workers/static-assets/redirects/)
+# 302 (temporary) so it can later point to a dedicated page without browsers caching the old target.
+/guides   /#guides   302
+/guides/  /#guides   302

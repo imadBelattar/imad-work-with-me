@@ -3,19 +3,26 @@
 One-page services site for Imad Belattar (@imad.code). Plain HTML + CSS + a little JS, no build step.
 
 ## Files
-Site files live in `public/` (only that folder is published).
+Site files live in `public/` (only that folder is published). `worker/index.js` is a small Worker that runs only for `/assets/reels/*` to answer byte-range requests (iPhone Safari won't play MP4 without them).
 - `index.html` — all the copy (Arabic, RTL). `TODO(imad)` comments mark text that needs approval.
 - `style.css` — Deep Slate design tokens at the top (`:root`).
 - `i18n.js` — translations. Arabic is read from `index.html`; French (and later Darija) live here.
-- `assets/` — Imad's photo (reel crop + square avatar, WebP).
-- `script.js` — the `CONFIG` block at the top holds the WhatsApp number, email, guide link and the site address used for SEO. Empty values are hidden on the page.
+- `assets/` — Imad's photo (reel crop + square avatar, WebP), `reels/` (web MP4s + covers), `guides/` (guide covers).
+- `guides.js` — the free guides list (title, one line, cover, Drive link). Add a guide by copying one block.
+- `_redirects` — short links (`/guides` → `/#guides`).
+- `script.js` — the `CONFIG` block at the top holds the WhatsApp number, email and the site address used for SEO. Empty values are hidden on the page.
 - `robots.txt`, `sitemap.xml`, `favicon.svg`, icons, `assets/og-image.jpg` — SEO and share preview.
 
 ## Preview locally
 ```
 cd public && python3 -m http.server 8000
 ```
-Then open http://localhost:8000
+Then open http://localhost:8000 (reel videos and `/guides` need the Cloudflare runtime: `npx wrangler dev` instead).
+
+## Adding a reel
+1. Make a web copy: `ffmpeg -i original.mp4 -vf scale=720:1280 -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p -c:a aac -b:a 96k -ac 1 -movflags +faststart public/assets/reels/reel-NAME.mp4` (aim for a few MB; keep the original out of the repo).
+2. Put the cover in `public/assets/reels/cover-NAME.webp` (540x960).
+3. Copy one `<li class="reelitem">` in `index.html`, set the MP4, `data-poster` and the post URL; add its title in `i18n.js` (French).
 
 ## Deploy
 Cloudflare Workers (static assets), connected to this repo. Every push to `main` deploys automatically to https://imadbelattar.dev (domain registered at Name.com, nameservers on Cloudflare).
