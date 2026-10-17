@@ -178,6 +178,12 @@ html[lang="fr"] .btn { font-family: var(--font-body); font-weight: 600; }
 }
 html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1.08; letter-spacing: -.025em; }
 .lead { margin-block-start: 22px; max-inline-size: 36em; font-size: 1.1875rem; color: rgba(232, 237, 242, .92); }
+.hero__list { margin-block-start: 14px; display: grid; gap: 6px; max-inline-size: 36em; font-size: 1.0625rem; color: rgba(232, 237, 242, .9); }
+.hero__list li { position: relative; padding-inline-start: 20px; }
+.hero__list li::before {
+  content: ""; position: absolute; inset-inline-start: 2px; inset-block-start: .8em;
+  inline-size: 7px; block-size: 7px; border-radius: 50%; background: rgba(232, 237, 242, .55);
+}
 .hero__note { margin-block-start: 14px; max-inline-size: 36em; color: rgba(232, 237, 242, .78); }
 .hero .actions { margin-block-start: 32px; }
 
@@ -442,7 +448,10 @@ html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1
   transition: transform .2s, background-color .2s;
 }
 .faq details[open] summary::after { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: var(--card); }
-.faq details p { padding-block-end: 22px; max-inline-size: 42em; color: rgba(232, 237, 242, .88); }
+.faq details p, .faq__a { padding-block-end: 22px; max-inline-size: 42em; color: rgba(232, 237, 242, .88); }
+.faq__a ul { display: grid; gap: 6px; }
+.faq__a li { position: relative; padding-inline-start: 18px; }
+.faq__a li::before { content: ""; position: absolute; inset-inline-start: 2px; inset-block-start: .8em; inline-size: 6px; block-size: 6px; border-radius: 50%; background: var(--muted); }
 
 /* Contact */
 .contact {

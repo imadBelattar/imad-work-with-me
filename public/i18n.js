@@ -5,10 +5,10 @@
 window.I18N = {
   ar: {
     "wa.general": "السلام عليكم، اطلعت على صفحتك وأريد الاستفسار عن خدماتك.",
-    "wa.offer": "السلام عليكم، أريد الاستفسار عن عرض: ",
-    "wa.o1": "ريلز موشن لنشاطي",
-    "wa.o2": "موقع لنشاطي",
-    "wa.o3": "إعداد ذكاء اصطناعي للمهام المتكررة",
+    "wa.offer": "السلام عليكم، أريد الاستفسار عن خدمة: ",
+    "wa.o1": "ريلز موشن جرافيك لنشاطي",
+    "wa.o2": "موقع ويب لنشاطي",
+    "wa.o3": "إعداد أدوات الذكاء الاصطناعي للمهام المتكررة",
     "nav.close": "إغلاق القائمة",
     "player.play": "تشغيل الفيديو:",
     "player.pause": "إيقاف الفيديو مؤقتًا:",
@@ -33,8 +33,11 @@ window.I18N = {
     "lang.label": "Langue",
 
     "hero.h1": "Des reels, des sites web et de l'IA pour votre activité",
-    "hero.lead": "Je suis Imad. Pour les freelances et entreprises au Maroc, je réalise des reels en motion design à partir de votre voix et de vos photos, des sites web de la landing page à la boutique en ligne, et une configuration d'IA pour vos tâches répétitives.",
-    "hero.note": "Chaque prestation a un périmètre précis et un livrable clair. Le prix est fixé avant de commencer.",
+    "hero.lead": "Je suis Imad. Je travaille avec les freelances et les entreprises au Maroc.",
+    "hero.l1": "Des reels en motion design à partir de votre enregistrement vocal et de vos photos.",
+    "hero.l2": "Des sites web, de la landing page à la boutique en ligne.",
+    "hero.l3": "La mise en place d'outils d'IA pour vos tâches répétitives.",
+    "hero.note": "Chaque prestation a un périmètre précis et un livrable clair. On fixe le prix avant de commencer.",
     "hero.photoAlt": "Photo d'Imad Belattar",
     "frame.c1": "Reels motion",
     "frame.c2": "Sites web",
@@ -44,12 +47,12 @@ window.I18N = {
     "btn.ig": "Écrivez-moi sur Instagram",
     "btn.mail": "Écrivez-moi par e-mail",
 
-    "offers.h": "Trois prestations, un périmètre fixe",
-    "offers.intro": "Chaque offre a un périmètre défini et un livrable clair. Je fixe les prix et les délais avec vous avant de commencer.",
+    "offers.h": "Trois services, un périmètre défini",
+    "offers.intro": "On fixe ensemble le prix et le délai avant de commencer.",
     "o1.h": "Reels en motion design pour votre activité",
-    "o1.p": "Des reels sans visage, créés en code à partir de votre enregistrement vocal, de vos photos et captures d'écran, dans le même style que les reels <bdi>@imad.code</bdi>.",
+    "o1.p": "Des reels sans tournage et sans montrer votre visage. Je les crée à partir de votre enregistrement vocal, de vos photos et captures d'écran, dans le style des reels <bdi>@imad.code</bdi>.",
     "o1.deliver": "Fichier MP4 avec couverture et texte de publication",
-    "o2.h": "Un site pour votre activité",
+    "o2.h": "Un site web pour votre activité",
     "o2.p": "Boutique en ligne, site galerie pour vos réalisations, landing page ou catalogue avec un bouton de commande WhatsApp par produit. Un site rapide, pensé pour le mobile.",
     "o2.deliver": "Site en ligne et un moyen simple de mettre à jour le contenu vous-même",
     "o3.h": "L'IA pour vos tâches répétitives",
@@ -60,10 +63,10 @@ window.I18N = {
     "spec.timeVal": "Fixé avant de commencer",
     "spec.price": "Prix",
     "spec.priceVal": "Sur demande",
-    "offer.ask": "Demander cette offre",
+    "offer.ask": "Demander ce service",
 
     "work.h": "Réalisations",
-    "work.intro": "Des couvertures et des extraits de reels que j'ai créés et publiés sur <bdi>@imad.code</bdi>. Je montre ici uniquement mon vrai travail.",
+    "work.intro": "Des reels en motion design que j'ai créés et publiés sur Instagram, sur le compte <bdi>@imad.code</bdi>. Touchez une vidéo pour la lire avec le son.",
     "work.reelsLabel": "Reels @imad.code",
     "r1.t": "Une IA qui répond à vos clients sur WhatsApp",
     "r2.t": "Les messages Claude s'épuisent vite ?",
@@ -79,8 +82,8 @@ window.I18N = {
     "work.note": "Quand je réaliserai des projets pour des clients, je les montrerai ici avec leur accord écrit.",
 
     "about.h": "Qui suis-je",
-    "about.p1": "Je suis Imad Belattar, ingénieur logiciel, titulaire d'un master en ingénierie des systèmes d'information. Je travaille à plein temps comme ingénieur logiciel.",
-    "about.p2": "À côté, je construis des solutions pour les entreprises locales au Maroc : de vrais sites web, pas seulement une page simple, comme des boutiques en ligne, des sites galerie et des landing pages, des vidéos en motion design, et j'aide les entreprises à intégrer l'IA dans leur façon de travailler.",
+    "about.p1": "Je suis Imad Belattar, ingénieur logiciel à plein temps, titulaire d'un master en ingénierie des systèmes d'information.",
+    "about.p2": "À côté, je construis des solutions pour les entreprises locales au Maroc.",
     "about.f1t": "Formation",
     "about.f1": "Master en ingénierie des systèmes d'information",
     "about.f2t": "Métier",
@@ -112,7 +115,7 @@ window.I18N = {
     "q2.q": "Combien de temps ça prend ?",
     "q2.a": "Le délai est fixé avec le périmètre avant de commencer, et il est écrit dans l'accord.",
     "q3.q": "Qu'est-ce que je dois fournir ?",
-    "q3.a": "Pour les reels : votre enregistrement vocal, vos photos et captures d'écran. Pour le site : les vraies photos de vos produits ou réalisations, les prix et les infos de livraison. Pour l'IA : la liste de vos tâches répétitives et les outils que vous utilisez aujourd'hui.",
+    "q3.a": "<ul><li>Pour les reels : votre enregistrement vocal, vos photos et captures d'écran.</li><li>Pour le site web : les vraies photos de vos produits ou réalisations, les prix et les infos de livraison.</li><li>Pour les outils d'IA : la liste de vos tâches répétitives et les outils que vous utilisez aujourd'hui.</li></ul>",
     "q4.q": "Puis-je faire des modifications après la livraison ?",
     "q4.a": "Pour le site, vous mettez à jour le contenu vous-même avec la méthode que je vous remets. Pour le reste, les modifications incluses sont celles écrites dans l'accord ; au-delà, on convient d'un nouveau travail.",
     "q5.q": "À qui appartient le nom de domaine ?",
@@ -120,7 +123,7 @@ window.I18N = {
     "q6.q": "Comment je paie ?",
     "q6.a": "On convient du moyen de paiement avant de commencer, et il est écrit dans l'accord.",
 
-    "contact.h": "Parlons-en",
+    "contact.h": "Parlons de votre projet",
     "contact.p": "Parlez-moi de votre activité et de votre besoin, je vous propose le périmètre adapté.",
 
     "footer.tagline": "Reels, sites web et IA pour les entreprises locales au Maroc.",
@@ -130,9 +133,9 @@ window.I18N = {
     "footer.rights": "Imad Belattar. Tous droits réservés.",
 
     "wa.general": "Bonjour, j'ai vu votre page et j'aimerais en savoir plus sur vos services.",
-    "wa.offer": "Bonjour, j'aimerais en savoir plus sur l'offre : ",
+    "wa.offer": "Bonjour, j'aimerais en savoir plus sur le service : ",
     "wa.o1": "Reels en motion design pour mon activité",
-    "wa.o2": "Un site pour mon activité",
+    "wa.o2": "Un site web pour mon activité",
     "wa.o3": "L'IA pour mes tâches répétitives"
   }
 };
