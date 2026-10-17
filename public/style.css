@@ -375,7 +375,7 @@ html[lang="fr"] .hero h1 { font-size: clamp(2rem, 7.4vw, 3.9rem); line-height: 1
 .guide h3 { font-size: 1.125rem; font-weight: 700; line-height: 1.5; }
 .guide__line { color: rgba(232, 237, 242, .88); font-size: 1rem; }
 .guide__meta { color: var(--muted); font-size: .9375rem; }
-.guide__btn { grid-column: 1 / -1; white-space: normal; text-align: center; border-color: var(--accent); }
+.guide__btn { grid-column: 1 / -1; white-space: normal; text-align: center; line-height: 1.35; padding-block: 10px; border-color: var(--accent); }
 .guides__cta {
   margin-block-start: 32px;
   display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px;
