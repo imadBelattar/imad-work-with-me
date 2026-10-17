@@ -5,7 +5,11 @@
   "assets": {
     "directory": "./public"
   },
-  // Public address imad-work-with-me.<account>.workers.dev
+  // Production address: the custom domain (Cloudflare creates its DNS record and HTTPS certificate)
+  "routes": [
+    { "pattern": "imadbelattar.dev", "custom_domain": true }
+  ],
+  // Also keep the old imad-work-with-me.<account>.workers.dev address working
   "workers_dev": true,
   // Each version and branch gets its own preview address (used to review changes before merging)
   "preview_urls": true,
